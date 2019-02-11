@@ -5,24 +5,24 @@
 # Source0 file verified with key 0xDBD2CE893E2D1C87 (cfeck@kde.org)
 #
 Name     : ksudoku
-Version  : 18.08.0
-Release  : 2
-URL      : https://download.kde.org/stable/applications/18.08.0/src/ksudoku-18.08.0.tar.xz
-Source0  : https://download.kde.org/stable/applications/18.08.0/src/ksudoku-18.08.0.tar.xz
-Source99 : https://download.kde.org/stable/applications/18.08.0/src/ksudoku-18.08.0.tar.xz.sig
+Version  : 18.12.2
+Release  : 3
+URL      : https://download.kde.org/stable/applications/18.12.2/src/ksudoku-18.12.2.tar.xz
+Source0  : https://download.kde.org/stable/applications/18.12.2/src/ksudoku-18.12.2.tar.xz
+Source99 : https://download.kde.org/stable/applications/18.12.2/src/ksudoku-18.12.2.tar.xz.sig
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : GFDL-1.2 GPL-2.0
-Requires: ksudoku-bin
-Requires: ksudoku-data
-Requires: ksudoku-license
-Requires: ksudoku-locales
+Requires: ksudoku-bin = %{version}-%{release}
+Requires: ksudoku-data = %{version}-%{release}
+Requires: ksudoku-license = %{version}-%{release}
+Requires: ksudoku-locales = %{version}-%{release}
 BuildRequires : buildreq-cmake
 BuildRequires : buildreq-kde
 BuildRequires : glu-dev
 BuildRequires : libkdegames-dev
 BuildRequires : mesa-dev
-BuildRequires : qtbase-dev qtbase-extras mesa-dev
+BuildRequires : qtbase-dev mesa-dev
 
 %description
 PROGRAM NAME  ksudoku
@@ -34,8 +34,8 @@ DATE          29/9/2005
 %package bin
 Summary: bin components for the ksudoku package.
 Group: Binaries
-Requires: ksudoku-data
-Requires: ksudoku-license
+Requires: ksudoku-data = %{version}-%{release}
+Requires: ksudoku-license = %{version}-%{release}
 
 %description bin
 bin components for the ksudoku package.
@@ -74,26 +74,26 @@ locales components for the ksudoku package.
 
 
 %prep
-%setup -q -n ksudoku-18.08.0
+%setup -q -n ksudoku-18.12.2
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1535432619
-mkdir clr-build
+export SOURCE_DATE_EPOCH=1549874696
+mkdir -p clr-build
 pushd clr-build
 %cmake ..
 make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1535432619
+export SOURCE_DATE_EPOCH=1549874696
 rm -rf %{buildroot}
-mkdir -p %{buildroot}/usr/share/doc/ksudoku
-cp COPYING %{buildroot}/usr/share/doc/ksudoku/COPYING
-cp COPYING.DOC %{buildroot}/usr/share/doc/ksudoku/COPYING.DOC
+mkdir -p %{buildroot}/usr/share/package-licenses/ksudoku
+cp COPYING %{buildroot}/usr/share/package-licenses/ksudoku/COPYING
+cp COPYING.DOC %{buildroot}/usr/share/package-licenses/ksudoku/COPYING.DOC
 pushd clr-build
 %make_install
 popd
@@ -265,9 +265,9 @@ popd
 /usr/share/doc/HTML/uk/ksudoku/index.docbook
 
 %files license
-%defattr(-,root,root,-)
-/usr/share/doc/ksudoku/COPYING
-/usr/share/doc/ksudoku/COPYING.DOC
+%defattr(0644,root,root,0755)
+/usr/share/package-licenses/ksudoku/COPYING
+/usr/share/package-licenses/ksudoku/COPYING.DOC
 
 %files locales -f ksudoku.lang
 %defattr(-,root,root,-)
