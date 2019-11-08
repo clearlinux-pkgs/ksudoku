@@ -5,11 +5,11 @@
 # Source0 file verified with key 0xDBD2CE893E2D1C87 (cfeck@kde.org)
 #
 Name     : ksudoku
-Version  : 19.08.2
-Release  : 14
-URL      : https://download.kde.org/stable/applications/19.08.2/src/ksudoku-19.08.2.tar.xz
-Source0  : https://download.kde.org/stable/applications/19.08.2/src/ksudoku-19.08.2.tar.xz
-Source1 : https://download.kde.org/stable/applications/19.08.2/src/ksudoku-19.08.2.tar.xz.sig
+Version  : 19.08.3
+Release  : 15
+URL      : https://download.kde.org/stable/applications/19.08.3/src/ksudoku-19.08.3.tar.xz
+Source0  : https://download.kde.org/stable/applications/19.08.3/src/ksudoku-19.08.3.tar.xz
+Source1 : https://download.kde.org/stable/applications/19.08.3/src/ksudoku-19.08.3.tar.xz.sig
 Summary  : A logic-based symbol placement puzzle
 Group    : Development/Tools
 License  : GFDL-1.2 GPL-2.0
@@ -74,14 +74,14 @@ locales components for the ksudoku package.
 
 
 %prep
-%setup -q -n ksudoku-19.08.2
+%setup -q -n ksudoku-19.08.3
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1570769828
+export SOURCE_DATE_EPOCH=1573187420
 mkdir -p clr-build
 pushd clr-build
 # -Werror is for werrorists
@@ -98,11 +98,11 @@ make  %{?_smp_mflags}  VERBOSE=1
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1570769828
+export SOURCE_DATE_EPOCH=1573187420
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/ksudoku
-cp COPYING %{buildroot}/usr/share/package-licenses/ksudoku/COPYING
-cp COPYING.DOC %{buildroot}/usr/share/package-licenses/ksudoku/COPYING.DOC
+cp %{_builddir}/ksudoku-19.08.3/COPYING %{buildroot}/usr/share/package-licenses/ksudoku/133efad5329acf364135c569ac01ec084c3d4647
+cp %{_builddir}/ksudoku-19.08.3/COPYING.DOC %{buildroot}/usr/share/package-licenses/ksudoku/bd75d59f9d7d9731bfabdc48ecd19e704d218e38
 pushd clr-build
 %make_install
 popd
@@ -275,8 +275,8 @@ popd
 
 %files license
 %defattr(0644,root,root,0755)
-/usr/share/package-licenses/ksudoku/COPYING
-/usr/share/package-licenses/ksudoku/COPYING.DOC
+/usr/share/package-licenses/ksudoku/133efad5329acf364135c569ac01ec084c3d4647
+/usr/share/package-licenses/ksudoku/bd75d59f9d7d9731bfabdc48ecd19e704d218e38
 
 %files locales -f ksudoku.lang
 %defattr(-,root,root,-)
