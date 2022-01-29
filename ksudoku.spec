@@ -6,7 +6,7 @@
 #
 Name     : ksudoku
 Version  : 21.12.1
-Release  : 36
+Release  : 37
 URL      : https://download.kde.org/stable/release-service/21.12.1/src/ksudoku-21.12.1.tar.xz
 Source0  : https://download.kde.org/stable/release-service/21.12.1/src/ksudoku-21.12.1.tar.xz
 Source1  : https://download.kde.org/stable/release-service/21.12.1/src/ksudoku-21.12.1.tar.xz.sig
@@ -83,7 +83,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1641933062
+export SOURCE_DATE_EPOCH=1643436537
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -99,7 +99,7 @@ make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1641933062
+export SOURCE_DATE_EPOCH=1643436537
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/ksudoku
 cp %{_builddir}/ksudoku-21.12.1/COPYING %{buildroot}/usr/share/package-licenses/ksudoku/133efad5329acf364135c569ac01ec084c3d4647
@@ -243,6 +243,7 @@ popd
 /usr/share/ksudoku/themes/scribble_preview.png
 /usr/share/kxmlgui5/ksudoku/ksudokuui.rc
 /usr/share/metainfo/org.kde.ksudoku.appdata.xml
+/usr/share/xdg/ksudokurc
 
 %files doc
 %defattr(0644,root,root,0755)
