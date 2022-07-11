@@ -5,11 +5,11 @@
 # Source0 file verified with key 0xBB463350D6EF31EF (heiko@shruuf.de)
 #
 Name     : ksudoku
-Version  : 22.04.2
-Release  : 42
-URL      : https://download.kde.org/stable/release-service/22.04.2/src/ksudoku-22.04.2.tar.xz
-Source0  : https://download.kde.org/stable/release-service/22.04.2/src/ksudoku-22.04.2.tar.xz
-Source1  : https://download.kde.org/stable/release-service/22.04.2/src/ksudoku-22.04.2.tar.xz.sig
+Version  : 22.04.3
+Release  : 43
+URL      : https://download.kde.org/stable/release-service/22.04.3/src/ksudoku-22.04.3.tar.xz
+Source0  : https://download.kde.org/stable/release-service/22.04.3/src/ksudoku-22.04.3.tar.xz
+Source1  : https://download.kde.org/stable/release-service/22.04.3/src/ksudoku-22.04.3.tar.xz.sig
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : BSD-3-Clause GFDL-1.2 GPL-2.0
@@ -73,15 +73,15 @@ locales components for the ksudoku package.
 
 
 %prep
-%setup -q -n ksudoku-22.04.2
-cd %{_builddir}/ksudoku-22.04.2
+%setup -q -n ksudoku-22.04.3
+cd %{_builddir}/ksudoku-22.04.3
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1654825804
+export SOURCE_DATE_EPOCH=1657559266
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -97,12 +97,12 @@ make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1654825804
+export SOURCE_DATE_EPOCH=1657559266
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/ksudoku
-cp %{_builddir}/ksudoku-22.04.2/CMakePresets.json.license %{buildroot}/usr/share/package-licenses/ksudoku/29fb05b49e12a380545499938c4879440bd8851e
-cp %{_builddir}/ksudoku-22.04.2/COPYING %{buildroot}/usr/share/package-licenses/ksudoku/133efad5329acf364135c569ac01ec084c3d4647
-cp %{_builddir}/ksudoku-22.04.2/COPYING.DOC %{buildroot}/usr/share/package-licenses/ksudoku/bd75d59f9d7d9731bfabdc48ecd19e704d218e38
+cp %{_builddir}/ksudoku-22.04.3/CMakePresets.json.license %{buildroot}/usr/share/package-licenses/ksudoku/29fb05b49e12a380545499938c4879440bd8851e
+cp %{_builddir}/ksudoku-22.04.3/COPYING %{buildroot}/usr/share/package-licenses/ksudoku/133efad5329acf364135c569ac01ec084c3d4647
+cp %{_builddir}/ksudoku-22.04.3/COPYING.DOC %{buildroot}/usr/share/package-licenses/ksudoku/bd75d59f9d7d9731bfabdc48ecd19e704d218e38
 pushd clr-build
 %make_install
 popd
